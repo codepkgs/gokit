@@ -57,14 +57,14 @@ func (s *Slice[T]) Remove(v T) error {
 	if find {
 		return nil
 	}
-	return fmt.Errorf("%v not in slice", v)
+	return fmt.Errorf("%v not found", v)
 }
 
 // Pop 弹出指定位置的元素，并返回弹出的元素
 func (s *Slice[T]) Pop(idx uint) (T, error) {
 	var zero T
 	if idx >= uint(len(s.elements)) {
-		return zero, fmt.Errorf("idx out of range")
+		return zero, fmt.Errorf("index out of range")
 	}
 	popEle := s.elements[idx]
 	s.elements = append(s.elements[:idx], s.elements[idx+1:]...)
@@ -93,7 +93,7 @@ func (s *Slice[T]) Index(value T, start, stop uint) (int, error) {
 			return int(start) + i, nil
 		}
 	}
-	return 0, fmt.Errorf("%v not in slice", value)
+	return 0, fmt.Errorf("%v not found", value)
 }
 
 // Clear 清空Slice
