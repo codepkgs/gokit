@@ -1,4 +1,4 @@
-package estrings
+package estring
 
 func GenLowerChars() string {
 	var lowerChars = make([]rune, 0, 26)
